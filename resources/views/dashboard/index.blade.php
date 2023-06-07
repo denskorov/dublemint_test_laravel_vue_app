@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container">
-        <user-page/>
+        <dashboard :users="{{$users}}"></dashboard>
     </div>
 @endsection

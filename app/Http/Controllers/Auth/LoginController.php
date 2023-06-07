@@ -40,7 +40,12 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function authenticated(Request $request, User $user){
-        return redirect($user->temporary_url);
+    public function authenticated(Request $request, User $user)
+    {
+        if (!$user->temporary_url)
+//            return redirect('/dashboard');
+            return auth()->logout();
+        else
+            return redirect($user->temporary_url);
     }
 }

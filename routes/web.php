@@ -21,5 +21,11 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth', 'signed']], function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
 });
 
+Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.'], function () {
+    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index']);
+});
